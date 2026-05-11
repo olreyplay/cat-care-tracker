@@ -1,6 +1,7 @@
 import CatProfile from "@/components/CatProfile";
 import StatCard from "@/components/StatCard";
 import DailyChecklist from "@/components/DailyChecklist";
+import HealthLogs from "@/components/HealthLogs";
 
 export default function HomePage() {
   return (
@@ -45,6 +46,7 @@ export default function HomePage() {
         </section>
 
         <DailyChecklist />
+        <HealthLogs />
       </div>
     </main>
   );
