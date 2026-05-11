@@ -1,4 +1,5 @@
 import CatProfile from "@/components/CatProfile";
+import StatCard from "@/components/StatCard";
 
 export default function HomePage() {
   return (
@@ -23,25 +24,23 @@ export default function HomePage() {
         <CatProfile />
 
         <section className="mt-6 grid gap-6 md:grid-cols-3">
-          <div className="rounded-4xl bg-white p-6 shadow-sm">
-            <p className="text-sm font-semibold text-stone-400">Meals Today</p>
+          <StatCard
+            label="Meals Today"
+            value="0"
+            helperText="No meals logged yet"
+          />
 
-            <h3 className="mt-4 text-4xl font-bold">0</h3>
-          </div>
+          <StatCard
+            label="Health Logs"
+            value="0"
+            helperText="No health notes added"
+          />
 
-          <div className="rounded-4xl bg-white p-6 shadow-sm">
-            <p className="text-sm font-semibold text-stone-400">Health Logs</p>
-
-            <h3 className="mt-4 text-4xl font-bold">0</h3>
-          </div>
-
-          <div className="rounded-4xl bg-white p-6 shadow-sm">
-            <p className="text-sm font-semibold text-stone-400">
-              Monthly Expenses
-            </p>
-
-            <h3 className="mt-4 text-4xl font-bold">$0</h3>
-          </div>
+          <StatCard
+            label="Monthly Expenses"
+            value="$0"
+            helperText="No expenses tracked yet"
+          />
         </section>
 
         <section className="mt-12 rounded-4xl bg-white p-8 shadow-sm">
