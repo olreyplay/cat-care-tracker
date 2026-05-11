@@ -1,3 +1,5 @@
+import CatProfile from "@/components/CatProfile";
+
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-orange-50 text-stone-900">
@@ -18,40 +20,7 @@ export default function HomePage() {
           </div>
         </header>
 
-        <section className="mt-12 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="rounded-4xl bg-white p-8 shadow-sm">
-            <div className="flex flex-col gap-8 md:flex-row md:items-center">
-              <div className="flex h-40 w-40 items-center justify-center rounded-4xl bg-orange-100 text-7xl">
-                🐱
-              </div>
-
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-orange-500">
-                  Cat Profile
-                </p>
-
-                <h2 className="mt-4 text-4xl font-bold">Mochi</h2>
-
-                <p className="mt-4 max-w-xl text-stone-500">
-                  Track meals, litter cleaning, health notes, and care tasks in
-                  one cozy dashboard.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-4xl bg-stone-900 p-8 text-white shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-orange-300">
-              Today
-            </p>
-
-            <h2 className="mt-4 text-4xl font-bold">3 Tasks</h2>
-
-            <p className="mt-4 text-stone-300">
-              Feeding, water refill, and litter cleaning are waiting for today.
-            </p>
-          </div>
-        </section>
+        <CatProfile />
 
         <section className="mt-6 grid gap-6 md:grid-cols-3">
           <div className="rounded-4xl bg-white p-6 shadow-sm">
