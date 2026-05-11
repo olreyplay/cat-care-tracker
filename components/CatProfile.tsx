@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 const catProfile = {
   name: "Mochi",
   breed: "British Shorthair",
@@ -13,7 +14,7 @@ export default function CatProfile() {
   return (
     <section className="mt-12 rounded-4xl bg-white p-8 shadow-sm">
       <div className="flex flex-col gap-8 md:flex-row md:items-center">
-        <div className="flex h-40 w-40 shrink-0 items-center justify-center overflow-hidden rounded-[2rem] bg-orange-100">
+        <div className="flex h-40 w-40 shrink-0 items-center justify-center overflow-hidden rounded-4xl bg-orange-100">
           <img
             src={catProfile.image}
             alt={catProfile.name}

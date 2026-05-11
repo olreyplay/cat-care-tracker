@@ -3,8 +3,15 @@ import StatCard from "@/components/StatCard";
 import DailyChecklist from "@/components/DailyChecklist";
 import HealthLogs from "@/components/HealthLogs";
 import ExpenseTracker from "@/components/ExpenseTracker";
+import { careTasks, expenses, healthLogs } from "@/data/dashboardData";
 
 export default function HomePage() {
+  const completedTasks = careTasks.filter((task) => task.completed).length;
+
+  const totalExpenses = expenses.reduce((total, expense) => {
+    return total + expense.amount;
+  }, 0);
+
   return (
     <main className="min-h-screen bg-orange-50 text-stone-900">
       <div className="mx-auto max-w-6xl px-6 py-8">
@@ -15,7 +22,7 @@ export default function HomePage() {
             </p>
 
             <h1 className="mt-3 text-5xl font-bold tracking-tight">
-              Mochi's Daily Care
+              Mochi&apos;s Daily Care
             </h1>
           </div>
 
@@ -28,21 +35,21 @@ export default function HomePage() {
 
         <section className="mt-6 grid gap-6 md:grid-cols-3">
           <StatCard
-            label="Meals Today"
-            value="0"
-            helperText="No meals logged yet"
+            label="Care Tasks"
+            value={`${completedTasks}/${careTasks.length}`}
+            helperText="Completed today"
           />
 
           <StatCard
             label="Health Logs"
-            value="0"
-            helperText="No health notes added"
+            value={String(healthLogs.length)}
+            helperText="Recent health notes"
           />
 
           <StatCard
             label="Monthly Expenses"
-            value="$0"
-            helperText="No expenses tracked yet"
+            value={`$${totalExpenses}`}
+            helperText="Tracked this month"
           />
         </section>
 

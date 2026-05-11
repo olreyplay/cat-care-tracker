@@ -1,31 +1,9 @@
 "use client";
 import { useState } from "react";
-
-const initialTasks = [
-  {
-    id: 1,
-    title: "Morning Feeding",
-    completed: true,
-  },
-  {
-    id: 2,
-    title: "Refill Water Bowl",
-    completed: false,
-  },
-  {
-    id: 3,
-    title: "Clean Litter Box",
-    completed: false,
-  },
-  {
-    id: 4,
-    title: "Evening Feeding",
-    completed: false,
-  },
-];
+import { careTasks } from "@/data/dashboardData";
 
 export default function DailyChecklist() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, setTasks] = useState(careTasks);
 
   function toggleTask(id: number) {
     setTasks(
@@ -45,7 +23,7 @@ export default function DailyChecklist() {
   const completedTasks = tasks.filter((task) => task.completed).length;
 
   return (
-    <section className="mt-12 rounded-[2rem] bg-white p-8 shadow-sm">
+    <section className="mt-12 rounded-4xl bg-white p-8 shadow-sm">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-orange-500">

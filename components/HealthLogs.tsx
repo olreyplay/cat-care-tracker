@@ -1,25 +1,8 @@
-const healthLogs = [
-  {
-    id: 1,
-    date: "May 11",
-    weight: "4.8 kg",
-    mood: "Playful",
-    appetite: "Normal",
-    note: "Ate breakfast well and played after lunch.",
-  },
-  {
-    id: 2,
-    date: "May 10",
-    weight: "4.8 kg",
-    mood: "Sleepy",
-    appetite: "Low",
-    note: "Slept more than usual in the afternoon.",
-  },
-];
+import { healthLogs } from "@/data/dashboardData";
 
 export default function HealthLogs() {
   return (
-    <section className="mt-12 rounded-[2rem] bg-white p-8 shadow-sm">
+    <section className="mt-12 rounded-4xl bg-white p-8 shadow-sm">
       <div>
         <p className="text-sm font-semibold uppercase tracking-[0.25em] text-orange-500">
           Health
@@ -36,7 +19,7 @@ export default function HealthLogs() {
         {healthLogs.map((log) => (
           <article
             key={log.id}
-            className="rounded-[1.5rem] border border-orange-100 bg-orange-50 p-5"
+            className="rounded-3xl border border-orange-100 bg-orange-50 p-5"
           >
             <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
               <div>
