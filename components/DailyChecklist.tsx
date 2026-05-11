@@ -9,11 +9,13 @@ type CareTask = {
 type DailyChecklistProps = {
   tasks: CareTask[];
   onToggleTask: (id: number) => void;
+  onOpenModal: () => void;
 };
 
 export default function DailyChecklist({
   tasks,
   onToggleTask,
+  onOpenModal,
 }: DailyChecklistProps) {
   const completedTasks = tasks.filter((task) => task.completed).length;
 
@@ -30,7 +32,10 @@ export default function DailyChecklist({
           </p>
         </div>
 
-        <button className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-600">
+        <button
+          onClick={onOpenModal}
+          className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-600"
+        >
           Add Task
         </button>
       </div>

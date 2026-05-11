@@ -7,9 +7,11 @@ import HealthLogs from "@/components/HealthLogs";
 import ExpenseTracker from "@/components/ExpenseTracker";
 import { careTasks, expenses, healthLogs } from "@/data/dashboardData";
 import CareCharts from "@/components/CareCharts";
+import TaskModal from "@/components/TaskModal";
 
 export default function HomePage() {
   const [tasks, setTasks] = useState(careTasks);
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   function toggleTask(id: number) {
     setTasks(
@@ -31,6 +33,17 @@ export default function HomePage() {
   const totalExpenses = expenses.reduce((total, expense) => {
     return total + expense.amount;
   }, 0);
+
+  function addTask(title: string) {
+    const newTask = {
+      id: Date.now(),
+      title,
+      completed: false,
+    };
+
+    setTasks([...tasks, newTask]);
+    setIsTaskModalOpen(false);
+  }
 
   return (
     <main className="min-h-screen bg-orange-50 text-stone-900">
@@ -73,11 +86,22 @@ export default function HomePage() {
           />
         </section>
 
-        <DailyChecklist tasks={tasks} onToggleTask={toggleTask} />
+        <DailyChecklist
+          tasks={tasks}
+          onToggleTask={toggleTask}
+          onOpenModal={() => setIsTaskModalOpen(true)}
+        />
         <HealthLogs />
         <ExpenseTracker />
         <CareCharts />
       </div>
+
+      {isTaskModalOpen && (
+        <TaskModal
+          onClose={() => setIsTaskModalOpen(false)}
+          onAddTask={addTask}
+        />
+      )}
     </main>
   );
 }
