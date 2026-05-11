@@ -1,4 +1,7 @@
-const tasks = [
+"use client";
+import { useState } from "react";
+
+const initialTasks = [
   {
     id: 1,
     title: "Morning Feeding",
@@ -22,6 +25,25 @@ const tasks = [
 ];
 
 export default function DailyChecklist() {
+  const [tasks, setTasks] = useState(initialTasks);
+
+  function toggleTask(id: number) {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            completed: !task.completed,
+          };
+        }
+
+        return task;
+      }),
+    );
+  }
+
+  const completedTasks = tasks.filter((task) => task.completed).length;
+
   return (
     <section className="mt-12 rounded-[2rem] bg-white p-8 shadow-sm">
       <div className="flex items-center justify-between">
@@ -30,7 +52,9 @@ export default function DailyChecklist() {
             Care Tasks
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold">Daily Checklist</h2>
+          <p className="mt-2 text-sm text-stone-500">
+            {completedTasks} of {tasks.length} tasks completed today
+          </p>
         </div>
 
         <button className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-600">
@@ -42,7 +66,8 @@ export default function DailyChecklist() {
         {tasks.map((task) => (
           <article
             key={task.id}
-            className="flex items-center justify-between rounded-2xl border border-orange-100 bg-orange-50 p-5"
+            onClick={() => toggleTask(task.id)}
+            className="flex cursor-pointer items-center justify-between rounded-2xl border border-orange-100 bg-orange-50 p-5 transition hover:border-orange-300"
           >
             <div className="flex items-center gap-4">
               <div
