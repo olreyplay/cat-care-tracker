@@ -1,5 +1,6 @@
 import CatProfile from "@/components/CatProfile";
 import StatCard from "@/components/StatCard";
+import DailyChecklist from "@/components/DailyChecklist";
 
 export default function HomePage() {
   return (
@@ -43,25 +44,7 @@ export default function HomePage() {
           />
         </section>
 
-        <section className="mt-12 rounded-4xl bg-white p-8 shadow-sm">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-orange-500">
-                Care Tasks
-              </p>
-
-              <h2 className="mt-3 text-3xl font-bold">Daily Checklist</h2>
-            </div>
-
-            <button className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-orange-600">
-              Add Task
-            </button>
-          </div>
-
-          <div className="mt-8 rounded-3xl border border-dashed border-orange-200 bg-orange-50 p-10 text-center">
-            <p className="text-stone-500">No care tasks added yet.</p>
-          </div>
-        </section>
+        <DailyChecklist />
       </div>
     </main>
   );
