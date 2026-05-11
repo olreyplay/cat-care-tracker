@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import CatProfile from "@/components/CatProfile";
 import StatCard from "@/components/StatCard";
 import DailyChecklist from "@/components/DailyChecklist";
@@ -7,7 +9,24 @@ import { careTasks, expenses, healthLogs } from "@/data/dashboardData";
 import CareCharts from "@/components/CareCharts";
 
 export default function HomePage() {
-  const completedTasks = careTasks.filter((task) => task.completed).length;
+  const [tasks, setTasks] = useState(careTasks);
+
+  function toggleTask(id: number) {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            completed: !task.completed,
+          };
+        }
+
+        return task;
+      }),
+    );
+  }
+
+  const completedTasks = tasks.filter((task) => task.completed).length;
 
   const totalExpenses = expenses.reduce((total, expense) => {
     return total + expense.amount;
@@ -37,7 +56,7 @@ export default function HomePage() {
         <section className="mt-6 grid gap-6 md:grid-cols-3">
           <StatCard
             label="Care Tasks"
-            value={`${completedTasks}/${careTasks.length}`}
+            value={`${completedTasks}/${tasks.length}`}
             helperText="Completed today"
           />
 
@@ -54,7 +73,7 @@ export default function HomePage() {
           />
         </section>
 
-        <DailyChecklist />
+        <DailyChecklist tasks={tasks} onToggleTask={toggleTask} />
         <HealthLogs />
         <ExpenseTracker />
         <CareCharts />

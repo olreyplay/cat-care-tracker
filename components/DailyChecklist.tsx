@@ -1,25 +1,20 @@
 "use client";
-import { useState } from "react";
-import { careTasks } from "@/data/dashboardData";
 
-export default function DailyChecklist() {
-  const [tasks, setTasks] = useState(careTasks);
+type CareTask = {
+  id: number;
+  title: string;
+  completed: boolean;
+};
 
-  function toggleTask(id: number) {
-    setTasks(
-      tasks.map((task) => {
-        if (task.id === id) {
-          return {
-            ...task,
-            completed: !task.completed,
-          };
-        }
+type DailyChecklistProps = {
+  tasks: CareTask[];
+  onToggleTask: (id: number) => void;
+};
 
-        return task;
-      }),
-    );
-  }
-
+export default function DailyChecklist({
+  tasks,
+  onToggleTask,
+}: DailyChecklistProps) {
   const completedTasks = tasks.filter((task) => task.completed).length;
 
   return (
@@ -44,7 +39,7 @@ export default function DailyChecklist() {
         {tasks.map((task) => (
           <article
             key={task.id}
-            onClick={() => toggleTask(task.id)}
+            onClick={() => onToggleTask(task.id)}
             className="flex cursor-pointer items-center justify-between rounded-2xl border border-orange-100 bg-orange-50 p-5 transition hover:border-orange-300"
           >
             <div className="flex items-center gap-4">
