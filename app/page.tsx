@@ -4,6 +4,7 @@ import DailyChecklist from "@/components/DailyChecklist";
 import HealthLogs from "@/components/HealthLogs";
 import ExpenseTracker from "@/components/ExpenseTracker";
 import { careTasks, expenses, healthLogs } from "@/data/dashboardData";
+import CareCharts from "@/components/CareCharts";
 
 export default function HomePage() {
   const completedTasks = careTasks.filter((task) => task.completed).length;
@@ -56,6 +57,7 @@ export default function HomePage() {
         <DailyChecklist />
         <HealthLogs />
         <ExpenseTracker />
+        <CareCharts />
       </div>
     </main>
   );

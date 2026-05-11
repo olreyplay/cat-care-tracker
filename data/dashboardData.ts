@@ -25,7 +25,7 @@ export const healthLogs = [
   {
     id: 1,
     date: "May 11",
-    weight: "4.8 kg",
+    weight: "6.0 kg",
     mood: "Playful",
     appetite: "Normal",
     note: "Ate breakfast well and played after lunch.",
